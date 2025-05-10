@@ -1,7 +1,7 @@
 import os
 from groq import Groq
 
-client = Groq(api_key="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")
+client = Groq(api_key="gsk")
 
 chat_completion = client.chat.completions.create(
     messages=[{"role": "user", "content": "Hello, Groq!"}],
@@ -15,7 +15,7 @@ from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage
 
 llm = ChatGroq(
-    groq_api_key="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",
+    groq_api_key="gsk",
     model_name="llama3-70b-8192"
 )
 
