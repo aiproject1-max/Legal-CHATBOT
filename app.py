@@ -19,7 +19,7 @@ print(f'osGOOGLE_API_KEY={osGOOGLE_API_KEY}')
 # Streamlit UI setup
 st.set_page_config(page_title="LawGPT")
 col1, col2, col3 = st.columns([1, 4, 1])
-st.title("Llama Model Legal ChatBot")
+st.title("TT Legal ChatBot")
 st.markdown("""
     <style>
     div.stButton > button:first-child {
