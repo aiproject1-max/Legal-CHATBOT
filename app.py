@@ -12,7 +12,9 @@ from dotenv import load_dotenv
 # Set up environment variables
 load_dotenv()
 os.environ['GOOGLE_API_KEY'] = os.getenv("GOOGLE_API_KEY")
+osGOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
+print(f'osGOOGLE_API_KEY={osGOOGLE_API_KEY}')
 
 # Streamlit UI setup
 st.set_page_config(page_title="LawGPT")
@@ -60,7 +62,7 @@ db_retriever = db.as_retriever(search_type="similarity", search_kwargs={"k": 4})
 
 # Define the prompt template
 prompt_template = """
-<s>[INST]This is a chat template and As a legal chat bot , your primary objective is to provide accurate and concise information based on the user's questions. Do not generate your own questions and answers. You will adhere strictly to the instructions provided, offering relevant context from the knowledge base while avoiding unnecessary details. Your responses will be brief, to the point, and in compliance with the established format. If a question falls outside the given context, you will refrain from utilizing the chat history and instead rely on your own knowledge base to generate an appropriate response. You will prioritize the user's query and refrain from posing additional questions. The aim is to deliver professional, precise, and contextually relevant information pertaining to the Indian Penal Code.
+<s>[INST]This is a chat template and As a legal chat bot , your primary objective is to provide accurate and concise information based on the user's questions. Do not generate your own questions and answers. You will adhere strictly to the instructions provided, offering relevant context from the knowledge base while avoiding unnecessary details. Your responses will be brief, to the point, and in compliance with the established format. If a question falls outside the given context, you will refrain from utilizing the chat history and instead rely on your own knowledge base to generate an appropriate response. You will prioritize the user's query and refrain from posing additional questions. The aim is to deliver professional, precise, and contextually relevant information pertaining to the uploaded files.
 CONTEXT: {context}
 CHAT HISTORY: {chat_history}
 QUESTION: {question}
@@ -71,7 +73,7 @@ prompt = PromptTemplate(template=prompt_template, input_variables=['context', 'q
 
 # Initialize the LLM
 llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama3-70b-8192")
-
+print(f'groq_api_key={groq_api_key}')
 # Set up the QA chain
 qa = ConversationalRetrievalChain.from_llm(
     llm=llm,

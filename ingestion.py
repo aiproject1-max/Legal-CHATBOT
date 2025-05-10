@@ -26,6 +26,7 @@ def embed_and_save_documents():
         if 'source' in doc.metadata:
             source_file = doc.metadata['source']
             doc.metadata['source'] = os.path.basename(source_file)
+            print(f"Updated source metadata: {doc.metadata['source']}")
         else:
             # If source metadata is not present, add it
             doc.metadata['source'] = os.path.basename(loader.directory)
