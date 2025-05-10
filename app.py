@@ -14,7 +14,7 @@ load_dotenv()
 os.environ['GOOGLE_API_KEY'] = os.getenv("GOOGLE_API_KEY")
 osGOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
-print(f'osGOOGLE_API_KEY={osGOOGLE_API_KEY}')
+
 
 # Streamlit UI setup
 st.set_page_config(page_title="LawGPT")
@@ -73,7 +73,6 @@ prompt = PromptTemplate(template=prompt_template, input_variables=['context', 'q
 
 # Initialize the LLM
 llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama3-70b-8192")
-print(f'groq_api_key={groq_api_key}')
 # Set up the QA chain
 qa = ConversationalRetrievalChain.from_llm(
     llm=llm,
